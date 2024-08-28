@@ -3,11 +3,16 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
-const { serverConfig, knexConfig } = require('./configs/config');
-const knex = require('knex')(knexConfig.development);
+const serverConfig = require('./configs/server');
+const knexConfig = require('./configs/db');
+const knex = require('knex')(knexConfig);
 
 const app = express();
 const PORT = serverConfig.port || 3001;
+
+app.set('knex', knex);
+
+app.disable('etag');
 
 app.use(express.json());
 
@@ -47,7 +52,7 @@ app.use('/api', courseRoutes);
 app.use('/api', applicationRoutes);
 app.use('/api', dataRoutes);
 app.use('/api', authRoutes);
-app.use('/api/', adminRoutes);
+app.use('/api', adminRoutes);
 
 //const loginRequired = require('./middleware/login-required');
 // Serve info about the logged-in user.  Since only 

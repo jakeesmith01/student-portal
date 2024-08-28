@@ -1,0 +1,122 @@
+// Inspired from https://github.com/robin-dela/css-mask-animation
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   }
+    
+   
+   @mixin button($bcolor,
+        $url,
+        $x1,
+        $y1,
+        $bor,
+        $col) {
+            background: $bcolor;
+            -webkit-mask: url($url);
+            mask: url($url);
+            -webkit-mask-size: $x1 $y1;
+            mask-size: $x1 $y1;
+            border: $bor;
+            color: $col;
+   } 
+
+   .button-container-1 {
+        position: relative;
+        width: 200px;
+        height: 66.67px; 
+        margin-top: 10px; 
+        overflow: hidden;  
+        font-weight: bold;
+        font-size: 30px;
+        transition: 0.5s;
+        letter-spacing: 1px;
+        border-radius: 8px;
+    
+        button {
+                width: 101%;
+                height: 100%;  
+                font-size: 30px;
+                letter-spacing: 1.5px; 
+                font-weight: bold;
+                @include button(#512888,
+                "https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png",
+                    2300%,
+                    100%,
+                    none,
+                    white);
+                    cursor: pointer;
+                    -webkit-animation: ani2 0.7s steps(22) forwards;
+                    animation: ani2 0.7s steps(22) forwards;
+            
+                &:hover {
+                    -webkit-animation: ani 0.7s steps(22) forwards;
+                    animation: ani 0.7s steps(22) forwards;
+                 }       
+        }
+     }
+
+   .mas {
+
+       position: absolute;
+       color: #512888;
+       text-align: center;
+       width: 101%; 
+       height: 100%;  
+       font-weight: bold;
+       position: absolute;
+       font-size: 30px;
+       letter-spacing: 1.5px;
+        margin-top: 10px; 
+       overflow: hidden; 
+   }
+   
+   @-webkit-keyframes ani {
+    from {
+     -webkit-mask-position: 0 0;
+     mask-position: 0 0;
+    }
+   
+    to {
+     -webkit-mask-position: 100% 0;
+     mask-position: 100% 0;
+    }
+   }
+   
+   @keyframes ani {
+    from {
+     -webkit-mask-position: 0 0;
+     mask-position: 0 0;
+    }
+   
+    to {
+     -webkit-mask-position: 100% 0;
+     mask-position: 100% 0;
+    }
+   }
+   
+   @-webkit-keyframes ani2 {
+    from {
+     -webkit-mask-position: 100% 0;
+     mask-position: 100% 0;
+    }
+   
+    to {
+     -webkit-mask-position: 0 0;
+     mask-position: 0 0;
+    }
+   }
+   
+   @keyframes ani2 {
+    from {
+     -webkit-mask-position: 100% 0;
+     mask-position: 100% 0;
+    }
+   
+    to {
+     -webkit-mask-position: 0 0;
+     mask-position: 0 0;
+    }
+   }
+    

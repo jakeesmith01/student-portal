@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const knex = require('knex')(require('../configs/config').knexConfig.development);
 
 //TODO: The end point should be changed to something like 'login' then use userContext to populate profile and application page
 router.get('/getUserDetail', async (req, res) => {
+    const knex = req.app.get('knex')
     console.log('Getting User Details for EID: ' + req.query.id);
     const eid = req.query.id; 
     if (!eid) {
@@ -28,6 +28,7 @@ router.get('/getUserDetail', async (req, res) => {
 });
 
 router.put('/updateUserName', async (req, res) => {
+    const knex = req.app.get('knex')
     console.log('Updating User Name for EID: ' + req.query.eid);
     const eid = req.query.eid;
     const { firstName, lastName } = req.body; // Extract the new first and last names from the request body
@@ -65,6 +66,7 @@ router.put('/updateUserName', async (req, res) => {
 }); 
 
 router.post('/updateAdvisor', async (req, res) => {
+    const knex = req.app.get('knex')
     const eid = req.query.eid;
     const { newAdvisor } = req.body;
     try { 

@@ -13,7 +13,9 @@
 		"semi": "warn"
 	},
 	"extends": "eslint:recommended",
+	"parser": "babel-eslint",
 	"parserOptions": {
+		"sourceType": "module",
 		"ecmaFeatures": {
 			"experimentalObjectRestSpread": true
 		}

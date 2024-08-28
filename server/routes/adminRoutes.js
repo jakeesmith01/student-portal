@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const knex = require('knex')(require('../configs/config').knexConfig.development);
 //const isAdmin = require('../middleware/admin-required');
 //router.use(isAdmin);
 
+
+
 router.post('/disableApplications', async (req, res) => {
+    const knex = req.app.get('knex')
     const { ids } = req.body; // Expect an array of IDs
 
     if (!ids || ids.length === 0) {
@@ -28,6 +30,7 @@ router.post('/disableApplications', async (req, res) => {
 });
 
 router.post('/sendEmail', async (req, res) => {
+    const knex = req.app.get('knex')
     const { ids } = req.body; // Expect an array of IDs
     if (!ids || ids.length === 0) {
         return res.status(400).json({ message: 'No application IDs provided' });
@@ -55,6 +58,7 @@ router.post('/sendEmail', async (req, res) => {
 });
 
 const updateApplicationNotes = async (appId, notes) => {
+    const knex = req.app.get('knex')
     const now = new Date();
     const formattedDateForDB = now.toISOString().slice(0, 19).replace('T', ' ');
 
@@ -66,6 +70,7 @@ const updateApplicationNotes = async (appId, notes) => {
 };
 
 router.post('/saveNotes', async (req, res) => {
+    const knex = req.app.get('knex')
     const appId = req.query.appId; // Correctly access the appId from the query parameters
     const { notes } = req.body; 
 
@@ -80,6 +85,7 @@ router.post('/saveNotes', async (req, res) => {
 });
 
 router.post('/updateApplication', async (req, res) => {
+    const knex = req.app.get('knex')
     const appId = req.query.appId; 
     const { notes, status, dars_updated_by } = req.body; 
 

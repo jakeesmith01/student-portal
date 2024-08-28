@@ -8,7 +8,7 @@
 
 	"dockerComposeFile": "docker-compose.yaml",
 	"service": "app",
-	"workspaceFolder": "/workspaces/Capstone",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -29,13 +29,13 @@
 	// More info: https://containers.dev/implementors/json_reference/#port-attributes
 	"portsAttributes": {
 		"3000": {
-			"label": "Hello Remote World",
+			"label": "CS Student Portal",
 			"onAutoForward": "notify"
 		}
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created. 
-	"postCreateCommand": "npm install knex -g && npm install && cd client && npm install && cd app && npm install && cd ../../server && npm install"
+	"postCreateCommand": "npm install knex -g && npm install vite -g && cd client && npm install && cd ../../server && npm install"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"

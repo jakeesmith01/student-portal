@@ -1,9 +1,9 @@
 const express = require('express');
 const { route } = require('./applicationRoutes');
 const router = express.Router();
-const knex = require('knex')(require('../configs/config').knexConfig.development);
 
 router.get('/courses', async (req, res) => {  
+    const knex = req.app.get('knex')
     const id = req.query.id; 
     if (!id) {
         console.log('No WID provided!');
@@ -34,7 +34,7 @@ router.get('/courses', async (req, res) => {
     }  
 });
 
-function getNthWeekdayFallSummer(year, month, weekday, n) {
+function getNthWeekdayFallSummer(year, month, weekday, n) {    
     let date = new Date(year, month - 1, 1); 
     let count = 0; 
     
@@ -89,6 +89,7 @@ function determineSemester(dateInput) {
 }
 
 router.post('/submitApplication', async (req, res) => {
+    const knex = req.app.get('knex')
     const { studentData, additionalInfo, courses } = req.body;
     console.log('submitting application for wid: ' + studentData.wid);  
     const now = new Date();  
