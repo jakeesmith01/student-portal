@@ -1,5 +1,4 @@
 //TODO: Update all http to https address, local env was not set up correctly. 
-require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
