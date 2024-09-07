@@ -25,7 +25,8 @@
   "scripts": {
     "start": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +48,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.10",
+    "jsdom": "^25.0.0",
     "mocha": "^10.2.0"
   }
 }
