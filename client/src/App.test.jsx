@@ -2,13 +2,13 @@ import { expect, describe, it, vi, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom'
 import App from './App.jsx';
-import { UserProvider } from './context/UserContext.jsx'
+import { UserContext, UserProvider } from './context/UserContext.jsx'
 
 
 beforeEach(() => {
     global.fetch = vi.fn(() => 
         Promise.resolve({
-            json: () => Promise.resolve({ user: {name: 'John Doe'} }),
+            json: () => Promise.resolve({ user: {name: 'John Doe', wid: '1234'} }),
         })
     );
 });
@@ -16,7 +16,7 @@ beforeEach(() => {
 
 describe('App Component', () => {
 
-    it('Renders header and footer', async () => {
+    it('Renders not logged in if the user is not logged in', async () => {
         render(
             <UserProvider>
                 <MemoryRouter intialEntries={['/']}>
