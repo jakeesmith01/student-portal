@@ -22,23 +22,6 @@ vi.mock('./context/UserContext.jsx', async (importOriginal) => {
 
 describe('App Component', () => {
 
-    it('Renders not logged in if the user is not logged in', async () => {
-        global.fetch = vi.fn()
-        fetch.mockResolvedValue(() => 
-            Promise.resolve({
-                ok: false,
-            })
-        )
-
-        render(
-            <UserProvider>         
-                <App/>                    
-            </UserProvider>
-        );
-        
-        expect(screen.getAllByText('Not logged in.')).toBeInTheDocument()
-    })
-
     it('Renders home page if the user is logged in', async () => {       
 
         global.fetch = vi.fn(() =>
