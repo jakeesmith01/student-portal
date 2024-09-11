@@ -65,7 +65,7 @@ describe('Application form', () => {
         );
 
         await waitFor(() => {
-            expect(screen.getByText('Computer Science Apps')).toBeInTheDocument()
+            expect(screen.getByText('Professional Program Application')).toBeInTheDocument()
         })
     })
 })
