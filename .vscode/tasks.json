@@ -2,19 +2,52 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "1. Install Client & Server",
+            "label": "Install client",
             "type": "shell",
-            "command": "cd client && npm install && cd .. && cd server && npm install",
-            "group": {
-                "kind": "build",
-                "isDefault": true
+            "command": "cd client && npm install",
+            "group": "build",
+            "presentation": {
+                "group": "buildGroup",
+                "reveal": "always",
+                "panel": "new",
+                "echo": false
             }
         },
+        {
+            "label": "Build Server",
+            "type": "shell",
+            "command": "cd server && npm install",
+            "group": "build",
+            "presentation": {
+                "group": "buildGroup",
+                "reveal": "always",
+                "panel": "new",
+                "echo": false
+            }
+        },
+        {
+            "label": "1. Build All",
+            "dependsOn": [
+                "Build Client",
+                "Build Server"
+            ],
+            "group": "build",
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        
         {
             "label": "Run All Client Testing",
             "type": "shell",
             "command": "cd client && npm run test",
-            "group": "test"
+            "group": "test",
+            "presentation": {
+              "group": "testGroup",
+              "reveal": "always",
+              "panel": "new",
+              "echo": false
+          }
         },
         {
             "label": "2. Setup Server Testing",
@@ -32,7 +65,13 @@
             "label": "Run All Server Testing",
             "type": "shell",
             "command": "cd server && npm run test",
-            "group": "test"
+            "group": "test",
+            "presentation": {
+              "group": "testGroup",
+              "reveal": "always",
+              "panel": "new",
+              "echo": false
+          }
         },
         {
             "label": "3. Run All Testing",
