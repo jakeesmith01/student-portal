@@ -2,7 +2,22 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Setup Server Testing",
+            "label": "1. Install Client & Server",
+            "type": "shell",
+            "command": "cd client && npm install && cd .. && cd server && npm install",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Run All Client Testing",
+            "type": "shell",
+            "command": "cd client && npm run test",
+            "group": "test"
+        },
+        {
+            "label": "2. Setup Server Testing",
             "type": "shell",
             "command": "cd server && npm install vitest supertest --save-dev",
             "group": "build",
@@ -18,6 +33,13 @@
             "type": "shell",
             "command": "cd server && npm run test",
             "group": "test"
+        },
+        {
+            "label": "3. Run All Testing",
+            "dependsOn": [
+                "Run All Client Testing",
+                "Run All Server Testing"
+            ]
         }
     ]
 }
