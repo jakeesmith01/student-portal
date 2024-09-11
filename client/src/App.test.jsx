@@ -3,7 +3,6 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom'
 import App from './App.jsx';
 import { UserContext, UserProvider } from './context/UserContext.jsx'
-import HomePage from './components/forms/HomePage.jsx'
 
 vi.mock('./context/UserContext.jsx', async (importOriginal) => {
     const original = await importOriginal()
