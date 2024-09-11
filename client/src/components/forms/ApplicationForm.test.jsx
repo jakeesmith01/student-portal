@@ -29,11 +29,6 @@ describe('Application form', () => {
             wid: '12345',
             advisor: 'Sheryl Cornell',
         })
-        fetchCourses.mockResolvedValue({
-            courses: [
-                { class_subject: 'CS', class_catalog: '101', class_descr: 'intro to CS', status: 'Complete', grade: 'A' }
-            ],
-        })
 
         render(
             <UserContext.Provider value={mockUser}>
@@ -51,11 +46,6 @@ describe('Application form', () => {
             lastName: 'Doe',
             wid: '12345',
             advisor: 'Sheryl Cornell',
-        })
-        fetchCourses.mockResolvedValue({
-            courses: [
-                { class_subject: 'CS', class_catalog: '101', class_descr: 'intro to CS', status: 'Complete', grade: 'A' }
-            ],
         })
 
         render(

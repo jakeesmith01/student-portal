@@ -23,18 +23,6 @@ describe('Admin form', () => {
     })
 
     it('Admin form renders LoadingIndicator when loading', () => {
-        fetchUserDetailsForApplication.mockResolvedValue({
-            firstName: 'John',
-            lastName: 'Doe',
-            wid: '12345',
-            advisor: 'Sheryl Cornell',
-        })
-        fetchCourses.mockResolvedValue({
-            courses: [
-                { class_subject: 'CS', class_catalog: '101', class_descr: 'intro to CS', status: 'Complete', grade: 'A' }
-            ],
-        })
-
         render(
             <UserContext.Provider value={mockUser}>
                 <AdminForm/>
@@ -46,18 +34,6 @@ describe('Admin form', () => {
     })
 
     it('renders the admin form after loading is finished', async () => {
-        fetchUserDetailsForApplication.mockResolvedValue({
-            firstName: 'John',
-            lastName: 'Doe',
-            wid: '12345',
-            advisor: 'Sheryl Cornell',
-        })
-        fetchCourses.mockResolvedValue({
-            courses: [
-                { class_subject: 'CS', class_catalog: '101', class_descr: 'intro to CS', status: 'Complete', grade: 'A' }
-            ],
-        })
-
         render(
             <UserContext.Provider value={mockUser}>
                 <AdminForm/>
