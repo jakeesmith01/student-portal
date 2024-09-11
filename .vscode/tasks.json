@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Setup Server Testing",
+            "type": "shell",
+            "command": "cd server && npm install vitest supertest --save-dev",
+            "group": "build",
+            "presentation": {
+              "group": "buildGroup",
+              "reveal": "always",
+              "panel": "new",
+              "echo": false
+          }
+        },
+        {
+            "label": "Run All Server Testing",
+            "type": "shell",
+            "command": "cd server && npm run test",
+            "group": "test"
+        }
+    ]
+}
